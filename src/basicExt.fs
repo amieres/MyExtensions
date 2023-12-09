@@ -9,7 +9,7 @@ type on   = WebSharper.UI.Html.on
 type attr = WebSharper.UI.Html.attr
 #else
 /// dummy WebSharper definition in order to avoid having to use #if WEBSHARPER all the time
-module WebSharper =
+module WebSharper
     type RpcAttribute() =
         inherit System.Attribute()
         let a = 1
