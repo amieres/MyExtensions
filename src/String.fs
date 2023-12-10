@@ -1,3 +1,5 @@
+namespace myExtensions
+
 type System.String with
     member this.Substring2(from, n) = 
         if   n    <= 0           then ""
