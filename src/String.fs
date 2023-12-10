@@ -1,18 +1,17 @@
-namespace myExtensions
+module String
 
-type System.String with
-    member this.Substring2(from, n) = 
-        if   n    <= 0           then ""
-        elif from >= this.Length then ""
-        elif from <  0           then this.Substring2(0, n + from)
-        else this.Substring(from, min n (this.Length - from))
-    member this.Left             n  = if n < 0 
-                                      then this.Substring2(0, this.Length + n)
-                                      else this.Substring2(0, n              )
-    member this.Right            n  = this.Substring2(max 0 (this.Length - n), this.Length)
-    //member this.toUnderscore        = this |> Seq.mapi(fun i c -> if i > 0 && System.Char.IsUpper(c) then [ '_' ; c ] else [ c ])  |> Seq.collect id |> Seq.toArray |> System.String
+    type System.String with
+        member this.Substring2(from, n) = 
+            if   n    <= 0           then ""
+            elif from >= this.Length then ""
+            elif from <  0           then this.Substring2(0, n + from)
+            else this.Substring(from, min n (this.Length - from))
+        member this.Left             n  = if n < 0 
+                                          then this.Substring2(0, this.Length + n)
+                                          else this.Substring2(0, n              )
+        member this.Right            n  = this.Substring2(max 0 (this.Length - n), this.Length)
+        //member this.toUnderscore        = this |> Seq.mapi(fun i c -> if i > 0 && System.Char.IsUpper(c) then [ '_' ; c ] else [ c ])  |> Seq.collect id |> Seq.toArray |> System.String
 
-module String =
     let splitByChar (c: char) (s: string) = s.Split c
     let splitInTwoO spl txt = 
         let i = (txt:string).IndexOf (spl:string)
